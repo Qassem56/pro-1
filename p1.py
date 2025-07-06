@@ -82,13 +82,19 @@ top_country = sales_by_country.sort_values(by="Total Sales", ascending=False).il
 # KPI Row
 st.markdown("##")
 with st.container():
-    st.markdown("<div style='border: 2px solid #444; border-radius: 10px; padding: 20px;'>", unsafe_allow_html=True)
+    st.markdown("""
+    <div style='background-color: #1c1e26; border: 1px solid #333; border-radius: 12px; padding: 20px; margin-bottom: 20px;'>
+    <div style='display: flex; justify-content: space-around;'>
+    """, unsafe_allow_html=True)
     kpi1, kpi2, kpi3, kpi4 = st.columns(4)
     kpi1.metric("💰 Total Sales", f"${total_sales:,.0f}")
     kpi2.metric("📦 Orders", total_orders)
     kpi3.metric("🏆 Top Product", top_product)
     kpi4.metric("🌍 Top Country", top_country)
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("""
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Row for Charts 1 + 2
 st.markdown("##")
