@@ -125,7 +125,7 @@ with notes_col:
 st.markdown("""
 ---
 ## 📄 Project Summary
-This dashboard was created as part of a professional portfolio project for a fictional retail company called **Global Trendz**. The company operates in **Gulf Countries and Egypt**, selling a wide range of consumer products.
+This dashboard was developed for **Global Trendz**, a regional retail company operating across **Gulf countries and Egypt**. The dashboard is used internally by sales and operations teams to monitor performance, optimize sales strategies, and analyze historical trends.
 
 The dashboard helps managers:
 - Track total and segmented sales.
