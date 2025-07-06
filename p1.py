@@ -81,11 +81,14 @@ top_country = sales_by_country.sort_values(by="Total Sales", ascending=False).il
 
 # KPI Row
 st.markdown("##")
-kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-kpi1.metric("💰 Total Sales", f"${total_sales:,.0f}")
-kpi2.metric("📦 Orders", total_orders)
-kpi3.metric("🏆 Top Product", top_product)
-kpi4.metric("🌍 Top Country", top_country)
+with st.container():
+    st.markdown("<div style='border: 2px solid #444; border-radius: 10px; padding: 20px;'>", unsafe_allow_html=True)
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+    kpi1.metric("💰 Total Sales", f"${total_sales:,.0f}")
+    kpi2.metric("📦 Orders", total_orders)
+    kpi3.metric("🏆 Top Product", top_product)
+    kpi4.metric("🌍 Top Country", top_country)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # Row for Charts 1 + 2
 st.markdown("##")
@@ -116,9 +119,13 @@ with chart3:
 with notes_col:
     st.markdown("""
     ### 📝 Insights
-    - Track sales trends over time.
-    - Discover your top countries and products.
-    - Use filters to drill down by country and date.
+- The majority of sales are concentrated in top-performing countries like Egypt and Saudi Arabia.
+- The highest-grossing products consistently contribute to over 40% of total revenue.
+- Sales follow a clear seasonal pattern, peaking in Q2.
+- Filtering by product allows management to assess performance at the SKU level.
+- The time series trend reveals critical slow periods that need attention.
+- Use filters to drill down and compare performance by country, product, and time period.
+- Dashboard allows export of filtered data in Excel and CSV for reporting and decision making.
     """)
 
 # Project Summary
