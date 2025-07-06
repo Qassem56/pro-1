@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
+import io
 
 # Custom Page Config and Style
 st.set_page_config(page_title="📊 Global Trendz Sales Dashboard", layout="wide")
@@ -181,6 +182,8 @@ The dashboard helps managers:
 - Track total and segmented sales.
 - Visualize patterns.
 - Understand performance drivers.
+
+📄 [Download Full PDF Report](https://gbntjiwvxz5dndwaokcmuj.streamlit.app/Global_Trendz_Sales_Dashboard_Report.pdf)
 """)
 
 # Raw Data
@@ -201,7 +204,6 @@ with download_col1:
     )
 
 with download_col2:
-    import io
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         filtered_df.to_excel(writer, index=False, sheet_name='Filtered Data')
