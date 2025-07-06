@@ -10,6 +10,14 @@ st.set_page_config(page_title="📊 Global Trendz Sales Dashboard", layout="wide
 # Inject Custom CSS
 st.markdown("""
     <style>
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stApp, .stSidebar, .css-1d391kg, .css-1r6slb0, .css-1cpxqw2 {
+  animation: fadein 1s ease-in;
+}
 html, body, .stApp {
     background-color: #0e1117 !important;
     color: #FAFAFA;
@@ -34,6 +42,15 @@ html, body, .stApp {
     font-size: 24px !important;
     color: #FAFAFA;
 }
+  .stSidebar {
+    background-color: #1c1e26 !important;
+    padding: 20px;
+  }
+  .stSidebar label, .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4 {
+    font-size: 18px !important;
+    color: #F4C430 !important;
+    font-weight: 700;
+  }
 </style>
 """, unsafe_allow_html=True)
 
@@ -82,19 +99,39 @@ top_country = sales_by_country.sort_values(by="Total Sales", ascending=False).il
 # KPI Row
 st.markdown("##")
 with st.container():
-    st.markdown("""
-    <div style='background-color: #1c1e26; border: 1px solid #333; border-radius: 12px; padding: 20px; margin-bottom: 20px;'>
-    <div style='display: flex; justify-content: space-around;'>
-    """, unsafe_allow_html=True)
     kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-    kpi1.metric("💰 Total Sales", f"${total_sales:,.0f}")
-    kpi2.metric("📦 Orders", total_orders)
-    kpi3.metric("🏆 Top Product", top_product)
-    kpi4.metric("🌍 Top Country", top_country)
-    st.markdown("""
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
+
+    with kpi1:
+        st.markdown("""
+        <div style='background-color:#1c1e26;padding:15px;border-radius:10px;border:1px solid #333;text-align:center;'>
+            <h4>💰 Total Sales</h4>
+            <h2 style='color:#F4C430;'>${:,.0f}</h2>
+        </div>
+        """.format(total_sales), unsafe_allow_html=True)
+
+    with kpi2:
+        st.markdown("""
+        <div style='background-color:#1c1e26;padding:15px;border-radius:10px;border:1px solid #333;text-align:center;'>
+            <h4>📦 Orders</h4>
+            <h2 style='color:#F4C430;'>{}</h2>
+        </div>
+        """.format(total_orders), unsafe_allow_html=True)
+
+    with kpi3:
+        st.markdown("""
+        <div style='background-color:#1c1e26;padding:15px;border-radius:10px;border:1px solid #333;text-align:center;'>
+            <h4>🏆 Top Product</h4>
+            <h2 style='color:#F4C430;'>{}</h2>
+        </div>
+        """.format(top_product), unsafe_allow_html=True)
+
+    with kpi4:
+        st.markdown("""
+        <div style='background-color:#1c1e26;padding:15px;border-radius:10px;border:1px solid #333;text-align:center;'>
+            <h4>🌍 Top Country</h4>
+            <h2 style='color:#F4C430;'>{}</h2>
+        </div>
+        """.format(top_country), unsafe_allow_html=True)
 
 # Row for Charts 1 + 2
 st.markdown("##")
